@@ -3,6 +3,7 @@ SQL inlämningsuppgift "En liten bokhandel".
 Joakim Emilsson - YH24
 */
 
+-- Skapa och använda databasen Bokhandel1
 CREATE DATABASE Bokhandel1;
 USE Bokhandel1;
 
@@ -16,11 +17,12 @@ CREATE TABLE Kunder (
     Registreringsdatum TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
     
-    -- Testdata: Kunder
+-- Testdata: Kunder
 INSERT INTO Kunder (Namn, Email, Telefon, Adress) VALUES
-	('Joakim Emilsson', 'emilssonjoakim@gmail.com', '0760178885', 'Alsteråvägen 42'),
+	('Joakim Emilsson', 'emilssonjoakim@gmail.com', '0760178885', 'Alsteråvägen 42'), 
 	('Johan Johansson', 'johanssonjohan@gmail.com', '0702222222', 'Parkvägen 5'),
 	('Cecilia Holm', 'holmcecilia@gmail.com', '0703333333', 'Havsgatan 12');
+
 -- Visa inserts
 SELECT * FROM Kunder;
 
@@ -29,21 +31,22 @@ SELECT * FROM Kunder;
 CREATE TABLE Bocker (
 	BokID INT AUTO_INCREMENT PRIMARY KEY,
     Titel VARCHAR(255) NOT NULL,
-    ISBN VARCHAR(50) UNIQUE NOT NULL,
+    ISBN BIGINT UNIQUE NOT NULL,
     Forfattare VARCHAR(255) NOT NULL,
     Pris DECIMAL(10,2) NOT NULL,
     Lagerstatus INT DEFAULT 0
     );
     
-    -- Testdata: Böcker
+-- Testdata: Böcker
 INSERT INTO Bocker (Titel, ISBN, Forfattare, Pris, Lagerstatus) VALUES 
-	("Pojken och Äventyret", "123124135235132", 
-    "Jonsered Backen", 79.90, 200),
-	("Tiden som Tickade", "1231352453214", 
-    "Temu Toskinen", 12.90, 75),
-    ("JionDao och Kranen", "1343453234", 
-    "Irma Svensson", 89.00, 31);
+	('Pojken och Äventyret', '123124135235132', 
+    'Jonsered Backen', 79.90, 200),
+	('Tiden som Tickade', '1231352453214', 
+    'Temu Toskinen', 12.90, 75),
+    ('JionDao och Kranen', '1343453234', 
+    'Irma Svensson', 89.00, 31);
     
+-- Visa inserts
 SELECT * FROM Bocker;
 
 -- Tabell: Beställningar
@@ -54,15 +57,16 @@ CREATE TABLE Bestallningar (
     Totalbelopp DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (KundID) REFERENCES Kunder(KundID)
     );
-    -- Testdata: Beställningar
-INSERT INTO Bestallningar (KundID, Datum, Totalbelopp) VALUES
-    (1, "2025-01-02", 200.00),
-    (2, "2025-02-03", 100.00);
     
-    SELECT * FROM Bestallningar;
+-- Testdata: Beställningar
+INSERT INTO Bestallningar (KundID, Datum, Totalbelopp) VALUES
+    (1, '2025-01-02', 200.00),
+    (2, '2025-02-03', 100.00);
+    
+-- Visa inserts
+SELECT * FROM Bestallningar;
     
 -- Tabell: Orderrader (JOIN TABLE)
-
 CREATE TABLE Orderrader (
     OrderradID INT AUTO_INCREMENT PRIMARY KEY,
     OrderID INT NOT NULL,
@@ -79,19 +83,9 @@ VALUES
 	(1, 1, 1, 199.00),
 	(2, 2, 1, 149.00);
 
+-- Visa inserts
 SELECT * FROM Kunder;
 SELECT * FROM Bocker;
 
 SELECT * FROM Bestallningar;
 SELECT * FROM Orderrader;
-
-
-
-
-
-
-
-
-
-
-
