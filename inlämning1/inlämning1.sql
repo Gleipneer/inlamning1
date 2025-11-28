@@ -17,11 +17,10 @@ CREATE TABLE Kunder (
     );
     
     -- Testdata: Kunder
-    INSERT INTO Kunder (Namn, Email, Telefon, Adress)
-VALUES
-('Joakim Emilsson', 'emilssonjoakim@gmail.com', '0760178885', 'Alsteråvägen 42'),
-('Johan Johansson', 'johanssonjohan@gmail.com', '0702222222', 'Parkvägen 5'),
-('Cecilia Holm', 'holmcecilia@gmail.com', '0703333333', 'Havsgatan 12');
+INSERT INTO Kunder (Namn, Email, Telefon, Adress) VALUES
+	('Joakim Emilsson', 'emilssonjoakim@gmail.com', '0760178885', 'Alsteråvägen 42'),
+	('Johan Johansson', 'johanssonjohan@gmail.com', '0702222222', 'Parkvägen 5'),
+	('Cecilia Holm', 'holmcecilia@gmail.com', '0703333333', 'Havsgatan 12');
 -- Visa inserts
 SELECT * FROM Kunder;
 
@@ -37,8 +36,7 @@ CREATE TABLE Bocker (
     );
     
     -- Testdata: Böcker
-    INSERT INTO Bocker (Titel, ISBN, Forfattare, Pris, Lagerstatus)
-    VALUES 
+INSERT INTO Bocker (Titel, ISBN, Forfattare, Pris, Lagerstatus) VALUES 
 	("Pojken och Äventyret", "123124135235132", 
     "Jonsered Backen", 79.90, 200),
 	("Tiden som Tickade", "1231352453214", 
@@ -57,8 +55,7 @@ CREATE TABLE Bestallningar (
     FOREIGN KEY (KundID) REFERENCES Kunder(KundID)
     );
     -- Testdata: Beställningar
-    INSERT INTO Bestallningar (KundID, Datum, Totalbelopp)
-    VALUES
+INSERT INTO Bestallningar (KundID, Datum, Totalbelopp) VALUES
     (1, "2025-01-02", 200.00),
     (2, "2025-02-03", 100.00);
     
@@ -79,8 +76,8 @@ CREATE TABLE Orderrader (
 -- Testdata – Orderrader
 INSERT INTO Orderrader (OrderID, BokID, Antal, Radpris)
 VALUES
-(1, 1, 1, 199.00),
-(2, 2, 1, 149.00);
+	(1, 1, 1, 199.00),
+	(2, 2, 1, 149.00);
 
 SELECT * FROM Kunder;
 SELECT * FROM Bocker;
